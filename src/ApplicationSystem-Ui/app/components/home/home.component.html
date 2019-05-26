@@ -1,0 +1,106 @@
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <h2 class="text-center text-uppercase text-secondary mb-0">Application</h2>
+  <hr class="star-dark mb-5">
+  <form [formGroup]="applicationForm" (ngSubmit)="submitRegistration()" novalidate>
+    <div *ngIf="validMessage != ''">
+      <h3 class="has-info">{{validMessage}}</h3>
+    </div>
+    <div class="form-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Name</label>
+                    <input class="form-control" id="name" type="text" placeholder="Name"formControlName="name" required="required"  data-validation-required-message="Please enter your name.">
+                    <p class="help-block text-danger"></p>
+                    <div *ngIf="applicationForm.controls['name'].invalid && (applicationForm.controls['name'].dirty || applicationForm.controls['name'].touched)" class="alert alert-danger">
+                        <div *ngIf="applicationForm.controls['name'].errors.required">
+                          Name is required.
+                        </div>
+                    </div>
+                  </div>
+    </div>
+    <div class="form-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Date Of Birth (DD-MM-YYYY)</label>
+                    <input class="form-control" id="Dob" type="text" placeholder="Date Of Birth (DD-MM-YYYY)" formControlName="dob" required="required" pattern="^([0-2][0-9]|(3)[0-1])(-)(((0)[0-9])|((1)[0-2]))(-)\d{4}$" data-validation-required-message="Please enter your DOB.">
+                    <p class="help-block text-danger"></p>
+                    <div *ngIf="applicationForm.controls['dob'].invalid && (applicationForm.controls['dob'].dirty || applicationForm.controls['dob'].touched)" class="alert alert-danger">
+                        <div *ngIf="applicationForm.controls['dob'].errors.required">
+                          Date Of Birth is required.
+                        </div>
+                        <div id="DobIncorrectFormat" *ngIf="applicationForm.controls['dob'].errors && applicationForm.controls['dob'].errors.pattern">
+                          Please enter a valid date of birth (DD-MM-YYYY)
+                      </div>
+                    </div>
+                  </div>
+    </div>
+    <div class="form-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Email Address</label>
+                    <input class="form-control" id="email" type="email" placeholder="Email Address" formControlName="email"  required="required" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                    <div *ngIf="applicationForm.controls['email'].invalid && (applicationForm.controls['email'].dirty || applicationForm.controls['email'].touched)" class="alert alert-danger">
+                        <div *ngIf="applicationForm.controls['email'].errors.required">
+                          Email Address is required.
+                        </div>
+                        <div id="EmailIncorrectFormat"  *ngIf="applicationForm.controls['email'].errors && applicationForm.controls['email'].errors.pattern">
+                          Please enter valid email
+                      </div>
+                    </div>
+                  </div>
+    </div>
+    <div class="form-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Upload Picture</label>
+                  <input formControlName="image" type="file" (change)= "OnFileSelected($event)">
+                    <p class="help-block text-danger"></p>
+                  </div>
+                  <div *ngIf="imageResponse == 'true' ">
+                    <!-- <img width="50" height="50" align="right" id="ImageAccepted" src ="assets/img/ImageAccepted.jpg"/> -->
+                    <div  class ="alert alert-success">
+                      Image Accepted.
+                    </div>
+                  </div>
+                  <div *ngIf="imageResponse == 'false' ">
+                    <!-- <img width="50" height="50" align="right" id="ImageNotAccepted" src ="assets/img/ImageNotAccepted.png"/> -->
+                    <div  class="alert alert-danger">
+                      Image Not Accepted. Please Try Another
+                    </div>
+                  </div>
+    </div>
+    <div class="form-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>PPS Number</label>
+                    <input class="form-control" id="Pps" type="text" placeholder="PPS Number" required="required" formControlName="ppsNumber" ngModel minlength="8" ngModel maxlength="8" data-validation-required-message="Please enter your PPS Number.">
+                    <p class="help-block text-danger"></p>
+                    <div *ngIf="applicationForm.controls['ppsNumber'].invalid && (applicationForm.controls['ppsNumber'].dirty || applicationForm.controls['ppsNumber'].touched)" class="alert alert-danger">
+                        <div *ngIf="applicationForm.controls['ppsNumber'].errors.required">
+                          PPS Number is required.
+                        </div>
+                        <div id="PpsIncorrectFormat" ng-if="applicationForm.controls['ppsNumber'] < 8 || applicationForm.controls['ppsNumber'] >8 ">
+                          PPS number must be 8 characters
+                        </div>
+                    </div>
+                  </div>
+    </div>
+    <div class="form-group">
+                  <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                    <label>Phone Number</label>
+                    <input class="form-control" id="PhoneNumber" type="PhoneNumber" placeholder="Phone Number" formControlName="number" required="required" pattern="^[0-9]*$" data-validation-required-message="Please enter your email address.">
+                    <p class="help-block text-danger"></p>
+                    <div *ngIf="applicationForm.controls['number'].invalid && (applicationForm.controls['number'].dirty || applicationForm.controls['number'].touched)" class="alert alert-danger">
+                        <div *ngIf="applicationForm.controls['number'].errors.required">
+                          Phone Number is required.
+                        </div>
+                        <div id="NumberIncorrectFormat"  *ngIf="applicationForm.controls['number'].errors && applicationForm.controls['number'].errors.pattern">
+                          Please enter valid phone number
+                      </div>
+                    </div>
+                  </div>
+    </div>
+
+    <button type="submit" id="submit" class="btn btn-primary text-center text-uppercase" >Submit</button>
+  </form>
+  <br>
+</div>

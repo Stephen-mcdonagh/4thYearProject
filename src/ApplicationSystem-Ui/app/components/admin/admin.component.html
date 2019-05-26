@@ -1,0 +1,42 @@
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <h2 class="text-center text-uppercase text-secondary mb-0"> Administration</h2>
+  <hr class="star-dark mb-5">
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Date Of Birth</th>
+      <th>Email</th>
+      <th>Number</th>
+      <th>PPS Number</th>
+      <th>Application Date</th>
+    </tr>
+    <!--Loops through and puts db contents on screen  -->
+    <tr *ngFor="let application of applications">
+      <td>
+        <!-- {{application.name}} -->
+        <!-- Allows the admin to view a specific application  -->
+        <!-- <a [routerLink]="['/admin/view',appliction.id]">{{application.name}}</a> -->
+        <a [routerLink] = "['/admin/view',application.id]">{{application.name}} </a>
+      </td>
+      <td>
+        {{application.dob}}
+      </td>
+      <td>
+        {{application.email}}
+      </td>
+      <td>
+        {{application.number}}
+      </td>
+      <td>
+        {{application.ppsNumber}}
+      </td>
+      <td>
+        {{application.applicationDate}}
+      </td>
+    </tr>
+  </table>
+  <br>
+</div>
