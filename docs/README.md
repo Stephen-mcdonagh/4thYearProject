@@ -1,6 +1,6 @@
 # Passport Application System
 
-My idea for my final year project is facial detection which has been built within a passport application system. Below you will find a list of the technologies and tools used in development and testing of my system.
+My idea for my final year project is facial detection which has been built within a passport application system. Below you will find a list of the technologies and tools used in development and testing of my system. I am using LBP classifiers for my facial detection within OpenCV
 
 
 
