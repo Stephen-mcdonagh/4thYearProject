@@ -1,5 +1,5 @@
 
-The video walk through is [here](https://drive.google.com/file/d/1640eP3KkPBgsHBI5RiCk_AOLP8E8Uz5m/view?usp=sharing).
+The video walk through is removed
 
 
 Instructions:
